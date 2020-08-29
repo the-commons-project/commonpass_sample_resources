@@ -617,7 +617,7 @@ def create_dr_with_contained_labs():
 
     write_resource_to_file(
         uploaded_patient,
-        "dr_with_contained_labs/patient.json"
+        "dstu2/dr_with_contained_labs/patient.json"
     )
 
     organization = create_lab_organization(
@@ -669,16 +669,8 @@ def create_dr_with_contained_labs():
 
     write_resource_to_file(
         uploaded_diagnostic_report,
-        "dr_with_contained_labs/diagnostic_report.json"
+        "dstu2/dr_with_contained_labs/diagnostic_report.json"
     )
-
-
-
-
-
-
-
-
 
 
 ## 2 - Diagnostic report with referenced labs, lab results contain patient
@@ -696,7 +688,7 @@ def create_dr_with_referenced_labs_with_contained_patient():
 
     write_resource_to_file(
         uploaded_patient,
-        "dr_with_referenced_labs_with_contained_patient/patient.json"
+        "dstu2/dr_with_referenced_labs_with_contained_patient/patient.json"
     )
 
     organization = create_lab_organization(
@@ -724,7 +716,7 @@ def create_dr_with_referenced_labs_with_contained_patient():
     uploaded_lab_result_a = upload_observation(lab_result_a)
     write_resource_to_file(
         uploaded_lab_result_a,
-        "dr_with_referenced_labs_with_contained_patient/lab_result_a.json"
+        "dstu2/dr_with_referenced_labs_with_contained_patient/lab_result_a.json"
     )
 
     lab_result_b = create_lab_result_with_contained_patient(
@@ -741,7 +733,7 @@ def create_dr_with_referenced_labs_with_contained_patient():
     uploaded_lab_result_b = upload_observation(lab_result_b)
     write_resource_to_file(
         uploaded_lab_result_b,
-        "dr_with_referenced_labs_with_contained_patient/lab_result_b.json"
+        "dstu2/dr_with_referenced_labs_with_contained_patient/lab_result_b.json"
     )
 
     diagnostic_report = create_diagnostic_report_with_referenced_observations(
@@ -760,7 +752,7 @@ def create_dr_with_referenced_labs_with_contained_patient():
 
     write_resource_to_file(
         uploaded_diagnostic_report,
-        "dr_with_referenced_labs_with_contained_patient/diagnostic_report.json"
+        "dstu2/dr_with_referenced_labs_with_contained_patient/diagnostic_report.json"
     )
 
 
@@ -779,7 +771,7 @@ def create_dr_with_referenced_labs_with_referenced_patient():
 
     write_resource_to_file(
         uploaded_patient,
-        "dr_with_referenced_labs_with_referenced_patient/patient.json"
+        "dstu2/dr_with_referenced_labs_with_referenced_patient/patient.json"
     )
 
     organization = create_lab_organization(
@@ -807,7 +799,7 @@ def create_dr_with_referenced_labs_with_referenced_patient():
     uploaded_lab_result_a = upload_observation(lab_result_a)
     write_resource_to_file(
         uploaded_lab_result_a,
-        "dr_with_referenced_labs_with_referenced_patient/lab_result_a.json"
+        "dstu2/dr_with_referenced_labs_with_referenced_patient/lab_result_a.json"
     )
 
     lab_result_b = create_lab_result_with_referenced_patient(
@@ -824,7 +816,7 @@ def create_dr_with_referenced_labs_with_referenced_patient():
     uploaded_lab_result_b = upload_observation(lab_result_b)
     write_resource_to_file(
         uploaded_lab_result_b,
-        "dr_with_referenced_labs_with_referenced_patient/lab_result_b.json"
+        "dstu2/dr_with_referenced_labs_with_referenced_patient/lab_result_b.json"
     )
 
     diagnostic_report = create_diagnostic_report_with_referenced_observations(
@@ -843,7 +835,7 @@ def create_dr_with_referenced_labs_with_referenced_patient():
 
     write_resource_to_file(
         uploaded_diagnostic_report,
-        "dr_with_referenced_labs_with_referenced_patient/diagnostic_report.json"
+        "dstu2/dr_with_referenced_labs_with_referenced_patient/diagnostic_report.json"
     )
 
 
