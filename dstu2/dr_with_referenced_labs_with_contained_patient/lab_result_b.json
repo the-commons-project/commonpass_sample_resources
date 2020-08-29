@@ -1,14 +1,14 @@
 {
-    "id": "565087",
+    "id": "565106",
     "meta": {
-        "lastUpdated": "2020-08-29T13:30:00.492-04:00",
+        "lastUpdated": "2020-08-29T17:50:33.851-04:00",
         "versionId": "1"
     },
     "contained": [
         {
-            "id": "565085",
+            "id": "565103",
             "meta": {
-                "lastUpdated": "2020-08-29T13:29:59.899-04:00",
+                "lastUpdated": "2020-08-29T17:50:32.951-04:00",
                 "versionId": "1"
             },
             "extension": [
@@ -77,7 +77,7 @@
             }
         ]
     },
-    "effectiveDateTime": "2020-08-29T11:30:00",
+    "effectiveDateTime": "2020-08-29T15:50:33",
     "interpretation": {
         "coding": [
             {
@@ -86,7 +86,7 @@
             }
         ]
     },
-    "issued": "2020-08-29T11:30:00",
+    "issued": "2020-08-29T15:50:33",
     "method": {
         "coding": [
             {
@@ -111,7 +111,7 @@
     ],
     "status": "final",
     "subject": {
-        "reference": "#565085"
+        "reference": "#565103"
     },
     "valueString": "Indeterminate",
     "resourceType": "Observation"

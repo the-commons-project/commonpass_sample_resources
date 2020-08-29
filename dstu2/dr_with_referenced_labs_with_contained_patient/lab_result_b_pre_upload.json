@@ -1,17 +1,13 @@
 {
-    "resourceType": "Observation",
-    "id": "565106",
-    "meta": {
-        "versionId": "1",
-        "lastUpdated": "2020-08-29T17:50:33.851-04:00"
-    },
     "contained": [
         {
-            "resourceType": "Patient",
             "id": "565103",
+            "meta": {
+                "lastUpdated": "2020-08-29T17:50:32.951-04:00",
+                "versionId": "1"
+            },
             "extension": [
                 {
-                    "url": "http://commonpass.org/fhir/StructureDefinition/subject-passport-info",
                     "extension": [
                         {
                             "url": "country",
@@ -25,7 +21,8 @@
                             "url": "expiration",
                             "valueDate": "2024-12-04"
                         }
-                    ]
+                    ],
+                    "url": "http://commonpass.org/fhir/StructureDefinition/subject-passport-info"
                 }
             ],
             "name": [
@@ -37,15 +34,15 @@
                         "Test"
                     ]
                 }
-            ]
+            ],
+            "resourceType": "Patient"
         },
         {
-            "resourceType": "Organization",
             "id": "8932748723984",
-            "name": "Test Facility A"
+            "name": "Test Facility A",
+            "resourceType": "Organization"
         },
         {
-            "resourceType": "Practitioner",
             "id": "23980293840932",
             "name": {
                 "family": [
@@ -54,49 +51,37 @@
                 "given": [
                     "Lab"
                 ]
-            }
+            },
+            "resourceType": "Practitioner"
         }
     ],
-    "status": "final",
     "category": {
         "coding": [
             {
-                "system": "http://hl7.org/fhir/observation-category",
-                "code": "laboratory"
+                "code": "laboratory",
+                "system": "http://hl7.org/fhir/observation-category"
             }
         ]
     },
     "code": {
         "coding": [
             {
-                "system": "http://loinc.org",
                 "code": "94500-6",
-                "display": "SARS-COV-2, NAA"
+                "display": "SARS-COV-2, NAA",
+                "system": "http://loinc.org"
             }
         ]
     },
-    "subject": {
-        "reference": "#565103"
-    },
     "effectiveDateTime": "2020-08-29T15:50:33",
-    "issued": "2020-08-29T15:50:33",
-    "performer": [
-        {
-            "reference": "#8932748723984"
-        },
-        {
-            "reference": "#23980293840932"
-        }
-    ],
-    "valueString": "Indeterminate",
     "interpretation": {
         "coding": [
             {
-                "system": "http://hl7.org/fhir/v2/0078",
-                "code": "N"
+                "code": "N",
+                "system": "http://hl7.org/fhir/v2/0078"
             }
         ]
     },
+    "issued": "2020-08-29T15:50:33",
     "method": {
         "coding": [
             {
@@ -106,9 +91,23 @@
                         "valueString": "0123456789"
                     }
                 ],
-                "system": "http://commonpass.org/fhir/StructureDefinition/test-manufacturer-model",
-                "code": "MANUFACTURER_AND_MODEL"
+                "code": "MANUFACTURER_AND_MODEL",
+                "system": "http://commonpass.org/fhir/StructureDefinition/test-manufacturer-model"
             }
         ]
-    }
+    },
+    "performer": [
+        {
+            "reference": "#8932748723984"
+        },
+        {
+            "reference": "#23980293840932"
+        }
+    ],
+    "status": "final",
+    "subject": {
+        "reference": "#565103"
+    },
+    "valueString": "Indeterminate",
+    "resourceType": "Observation"
 }

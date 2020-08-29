@@ -604,32 +604,7 @@ def write_resource_to_file(resource, filename):
 
 ## 1 - Diagnostic report with contained lab results
 ##lab results MUST reference patient and include patient info in extension
-def create_dr_with_contained_labs():
-    patient = create_patient(
-        "Test", 
-        "Patient",
-        "12345678-90",
-        "United States of America",
-        date.fromisoformat('2024-12-04')
-    )
-
-    uploaded_patient = upload_patient(patient)
-
-    write_resource_to_file(
-        uploaded_patient,
-        "dstu2/dr_with_contained_labs/patient.json"
-    )
-
-    organization = create_lab_organization(
-        "8932748723984",
-        "Test Facility A"
-    )
-
-    lab_tech = create_lab_tech(
-        "23980293840932",
-        "Lab",
-        "Tech"
-    )
+def create_dr_with_contained_labs(uploaded_patient, organization, lab_tech):
 
     lab_result_a = create_lab_result_with_referenced_patient(
         uploaded_patient,
@@ -663,6 +638,11 @@ def create_dr_with_contained_labs():
         [lab_result_a, lab_result_b]
     )
 
+    write_resource_to_file(
+        diagnostic_report,
+        "dstu2/dr_with_contained_labs/diagnostic_report_pre_upload.json"
+    )
+
     uploaded_diagnostic_report = upload_diagnostic_report(
         diagnostic_report
     )
@@ -674,33 +654,7 @@ def create_dr_with_contained_labs():
 
 
 ## 2 - Diagnostic report with referenced labs, lab results contain patient
-def create_dr_with_referenced_labs_with_contained_patient():
-
-    patient = create_patient(
-        "Test", 
-        "Patient",
-        "12345678-90",
-        "United States of America",
-        date.fromisoformat('2024-12-04')
-    )
-
-    uploaded_patient = upload_patient(patient)
-
-    write_resource_to_file(
-        uploaded_patient,
-        "dstu2/dr_with_referenced_labs_with_contained_patient/patient.json"
-    )
-
-    organization = create_lab_organization(
-        "8932748723984",
-        "Test Facility A"
-    )
-
-    lab_tech = create_lab_tech(
-        "23980293840932",
-        "Lab",
-        "Tech"
-    )
+def create_dr_with_referenced_labs_with_contained_patient(uploaded_patient, organization, lab_tech):
 
     lab_result_a = create_lab_result_with_contained_patient(
         uploaded_patient,
@@ -711,6 +665,11 @@ def create_dr_with_referenced_labs_with_contained_patient():
         datetime.now(),
         datetime.now(),
         valueString="Negative"
+    )
+
+    write_resource_to_file(
+        lab_result_a,
+        "dstu2/dr_with_referenced_labs_with_contained_patient/lab_result_a_pre_upload.json"
     )
 
     uploaded_lab_result_a = upload_observation(lab_result_a)
@@ -730,6 +689,11 @@ def create_dr_with_referenced_labs_with_contained_patient():
         valueString="Indeterminate"
     )
 
+    write_resource_to_file(
+        lab_result_b,
+        "dstu2/dr_with_referenced_labs_with_contained_patient/lab_result_b_pre_upload.json"
+    )
+
     uploaded_lab_result_b = upload_observation(lab_result_b)
     write_resource_to_file(
         uploaded_lab_result_b,
@@ -746,6 +710,11 @@ def create_dr_with_referenced_labs_with_contained_patient():
         [uploaded_lab_result_a, uploaded_lab_result_b]
     )
 
+    write_resource_to_file(
+        diagnostic_report,
+        "dstu2/dr_with_referenced_labs_with_contained_patient/diagnostic_report_pre_upload.json"
+    )
+
     uploaded_diagnostic_report = upload_diagnostic_report(
         diagnostic_report
     )
@@ -757,33 +726,7 @@ def create_dr_with_referenced_labs_with_contained_patient():
 
 
 ## 3 - Diagnostic report with referenced labs, lab results DO NOT contain patient, and must include patient info extension
-def create_dr_with_referenced_labs_with_referenced_patient():
-
-    patient = create_patient(
-        "Test", 
-        "Patient",
-        "12345678-90",
-        "United States of America",
-        date.fromisoformat('2024-12-04')
-    )
-
-    uploaded_patient = upload_patient(patient)
-
-    write_resource_to_file(
-        uploaded_patient,
-        "dstu2/dr_with_referenced_labs_with_referenced_patient/patient.json"
-    )
-
-    organization = create_lab_organization(
-        "8932748723984",
-        "Test Facility A"
-    )
-
-    lab_tech = create_lab_tech(
-        "23980293840932",
-        "Lab",
-        "Tech"
-    )
+def create_dr_with_referenced_labs_with_referenced_patient(uploaded_patient, organization, lab_tech):
 
     lab_result_a = create_lab_result_with_referenced_patient(
         uploaded_patient,
@@ -838,8 +781,37 @@ def create_dr_with_referenced_labs_with_referenced_patient():
         "dstu2/dr_with_referenced_labs_with_referenced_patient/diagnostic_report.json"
     )
 
+patient = create_patient(
+    "Test", 
+    "Patient",
+    "12345678-90",
+    "United States of America",
+    date.fromisoformat('2024-12-04')
+)
 
+write_resource_to_file(
+    patient,
+    "dstu2/patient_pre_upload.json"
+)
 
-# create_dr_with_contained_labs()
-# create_dr_with_referenced_labs_with_contained_patient()
-create_dr_with_referenced_labs_with_referenced_patient()
+uploaded_patient = upload_patient(patient)
+
+write_resource_to_file(
+    uploaded_patient,
+    "dstu2/patient.json"
+)
+
+organization = create_lab_organization(
+    "8932748723984",
+    "Test Facility A"
+)
+
+lab_tech = create_lab_tech(
+    "23980293840932",
+    "Lab",
+    "Tech"
+)
+
+create_dr_with_contained_labs(uploaded_patient, organization, lab_tech)
+create_dr_with_referenced_labs_with_contained_patient(uploaded_patient, organization, lab_tech)
+create_dr_with_referenced_labs_with_referenced_patient(uploaded_patient, organization, lab_tech)
