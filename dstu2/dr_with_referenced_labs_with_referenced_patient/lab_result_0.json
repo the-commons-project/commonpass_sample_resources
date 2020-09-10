@@ -1,7 +1,7 @@
 {
-    "id": "565108",
+    "id": "153584",
     "meta": {
-        "lastUpdated": "2020-08-29T17:50:34.572-04:00",
+        "lastUpdated": "2020-09-10T22:45:20.772+00:00",
         "versionId": "1"
     },
     "contained": [
@@ -23,41 +23,6 @@
             "resourceType": "Practitioner"
         }
     ],
-    "extension": [
-        {
-            "extension": [
-                {
-                    "url": "http://commonpass.org/fhir/StructureDefinition/subject-name-info",
-                    "valueHumanName": {
-                        "family": [
-                            "Patient"
-                        ],
-                        "given": [
-                            "Test"
-                        ]
-                    }
-                },
-                {
-                    "extension": [
-                        {
-                            "url": "country",
-                            "valueString": "United States of America"
-                        },
-                        {
-                            "url": "number",
-                            "valueString": "12345678-90"
-                        },
-                        {
-                            "url": "expiration",
-                            "valueDate": "2024-12-04"
-                        }
-                    ],
-                    "url": "http://commonpass.org/fhir/StructureDefinition/subject-passport-info"
-                }
-            ],
-            "url": "http://commonpass.org/fhir/StructureDefinition/subject-info"
-        }
-    ],
     "category": {
         "coding": [
             {
@@ -75,7 +40,7 @@
             }
         ]
     },
-    "effectiveDateTime": "2020-08-29T15:50:34",
+    "effectiveDateTime": "2020-07-14T23:10:45-06:00",
     "interpretation": {
         "coding": [
             {
@@ -84,7 +49,7 @@
             }
         ]
     },
-    "issued": "2020-08-29T15:50:34",
+    "issued": "2020-07-14T23:10:45-06:00",
     "method": {
         "coding": [
             {
@@ -94,22 +59,60 @@
                         "valueString": "0123456789"
                     }
                 ],
-                "code": "MANUFACTURER_AND_MODEL",
+                "code": "TBD",
                 "system": "http://commonpass.org/fhir/StructureDefinition/test-manufacturer-model"
             }
         ]
     },
     "performer": [
         {
+            "display": "Test Facility A",
             "reference": "#8932748723984"
         },
         {
+            "display": "Lab Tech",
             "reference": "#23980293840932"
         }
     ],
     "status": "final",
     "subject": {
-        "reference": "Patient/565103"
+        "extension": [
+            {
+                "extension": [
+                    {
+                        "url": "http://commonpass.org/fhir/StructureDefinition/subject-name-info",
+                        "valueHumanName": {
+                            "family": [
+                                "Patient"
+                            ],
+                            "given": [
+                                "Lab A"
+                            ]
+                        }
+                    },
+                    {
+                        "extension": [
+                            {
+                                "url": "country",
+                                "valueString": "United States of America"
+                            },
+                            {
+                                "url": "number",
+                                "valueString": "12345678-90"
+                            },
+                            {
+                                "url": "expiration",
+                                "valueDate": "2024-12-04"
+                            }
+                        ],
+                        "url": "http://commonpass.org/fhir/StructureDefinition/subject-passport-info"
+                    }
+                ],
+                "url": "http://commonpass.org/fhir/StructureDefinition/subject-info"
+            }
+        ],
+        "display": "Lab A Patient",
+        "reference": "Patient/153583"
     },
     "valueString": "Negative",
     "resourceType": "Observation"

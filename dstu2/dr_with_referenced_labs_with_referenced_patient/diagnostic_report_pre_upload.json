@@ -1,9 +1,4 @@
 {
-    "id": "153586",
-    "meta": {
-        "lastUpdated": "2020-09-10T22:45:20.913+00:00",
-        "versionId": "1"
-    },
     "contained": [
         {
             "id": "8932748723984",
@@ -11,10 +6,6 @@
             "resourceType": "Organization"
         }
     ],
-    "text": {
-        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div class=\"hapiHeaderText\"> SARS-COV-2, NAA </div><table class=\"hapiPropertyTable\"><tbody><tr><td>Status</td><td>final</td></tr><tr><td>Issued</td><td> 15 July 2020 05:10:45 </td></tr></tbody></table></div>",
-        "status": "generated"
-    },
     "category": {
         "coding": [
             {

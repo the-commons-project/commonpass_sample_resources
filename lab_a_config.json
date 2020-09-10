@@ -1,0 +1,44 @@
+{
+    "unprotected_base_url": "http://localhost:4002/hapi-fhir-jpaserver/fhir",
+    "output_directory_name": "lab_a_dstu2",
+    "patient": {
+        "given_name": "Lab A",
+        "family_name": "Patient",
+        "passport_number": "12345678-90",
+        "passport_country": "United States of America",
+        "passport_expiration": "2024-12-04"
+    },
+    "organization": {
+        "id": "8932748723984",
+        "name": "Test Facility A"
+    },
+    "lab_tech": {
+        "id": "23980293840932",
+        "given_name": "Lab",
+        "family_name": "Tech"
+    },
+    "diagnostic_report": {
+        "code_code": "94500-6",
+        "code_display": "SARS-COV-2, NAA",
+        "effective": "2020-07-14T23:10:45",
+        "issued": "2020-07-14T23:10:45"
+    },
+    "lab_results": [
+        {
+            "code_code": "94564-2",
+            "code_display": "SARS-CoV-2 Antibody, IgM",
+            "valueString": "Negative",
+            "interpretation": "N",
+            "effective": "2020-07-14T23:10:45",
+            "issued": "2020-07-14T23:10:45"
+        },
+        {
+            "code_code": "94500-6",
+            "code_display": "SARS-COV-2, NAA",
+            "valueString": "Indeterminate",
+            "interpretation": "N",
+            "effective": "2020-07-14T23:10:45",
+            "issued": "2020-07-14T23:10:45"
+        }
+    ]
+}
