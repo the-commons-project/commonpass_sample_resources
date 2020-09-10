@@ -39,7 +39,7 @@ OBSERVATION_INTERPRETATION_CODE_SYSTEM = "http://hl7.org/fhir/v2/0078"
 OBSERVATION_INTERPRETATION_CODE_NORMAL = "N"
 
 TEST_MANUFACTURER_MODEL_SYSTEM = "http://commonpass.org/fhir/StructureDefinition/test-manufacturer-model"
-TEST_MANUFACTURER_MODEL_CODE = "MANUFACTURER_AND_MODEL"
+TEST_MANUFACTURER_MODEL_CODE = "TBD"
 
 TEST_IDENTIFIER_EXTENSION_URL = "http://commonpass.org/fhir/StructureDefinition/test-identifier"
 TEST_IDENTIFIER_EXTENSION_VALUE = "0123456789"
@@ -108,6 +108,9 @@ def create_patient(given_name, family_name, passport_number, passport_country, p
     patient.extension = [passport_extension]
 
     return patient
+
+def get_human_readable_name(name):
+    return " ".join(name.given + name.family)
 
 def create_codable_concept_with_single_coding(system, code, display, coding_extension):
     coding = Coding()
@@ -203,8 +206,10 @@ def create_lab_result_with_contained_patient(patient, test_facility, test_admini
     ##test performer(s)
     test_facility_reference = FHIRReference()
     test_facility_reference.reference = f'#{test_facility.id}'
+    test_facility_reference.display = test_facility.name
     test_administrator_reference = FHIRReference()
     test_administrator_reference.reference = f'#{test_administrator.id}'
+    test_administrator_reference.display = get_human_readable_name(test_facility.name)
 
     contained.extend([test_facility, test_administrator])
     lab_result.performer = [test_facility_reference, test_administrator_reference]
@@ -252,12 +257,13 @@ def create_lab_result_with_referenced_patient(patient, test_facility, test_admin
 
     patient_reference = FHIRReference()
     patient_reference.reference = f'Patient/{patient.id}'
-    lab_result.subject = patient_reference
 
+    patient_reference.display = get_human_readable_name(patient.name[0])
     patient_info_extension = create_subject_info_extension(patient)
-    lab_result.extension = [
+    patient_reference.extension = [
         patient_info_extension
     ]
+    lab_result.subject = patient_reference
 
     ##value
     if valueString:
@@ -300,8 +306,10 @@ def create_lab_result_with_referenced_patient(patient, test_facility, test_admin
     ##test performer(s)
     test_facility_reference = FHIRReference()
     test_facility_reference.reference = f'#{test_facility.id}'
+    test_facility_reference.display = test_facility.name
     test_administrator_reference = FHIRReference()
     test_administrator_reference.reference = f'#{test_administrator.id}'
+    test_administrator_reference.display = get_human_readable_name(test_administrator.name)
 
     contained.extend([test_facility, test_administrator])
     lab_result.performer = [test_facility_reference, test_administrator_reference]
@@ -364,6 +372,12 @@ def create_diagnostic_report_with_referenced_observations(patient, test_facility
     ##patient
     patient_reference = FHIRReference()
     patient_reference.reference = f'Patient/{patient.id}'
+    patient_reference.display = get_human_readable_name(patient.name[0])
+    patient_info_extension = create_subject_info_extension(patient)
+    patient_reference.extension = [
+        patient_info_extension
+    ]
+    diagnostic_report.subject = patient_reference
 
     # contained.append(patient)
     diagnostic_report.subject = patient_reference
@@ -383,6 +397,7 @@ def create_diagnostic_report_with_referenced_observations(patient, test_facility
     # test_facility_reference.reference = f'Organization/{test_facility.id}'
 
     test_facility_reference.reference = f'#{test_facility.id}'
+    test_facility_reference.display = test_facility.name
     contained.append(test_facility)
     diagnostic_report.performer = test_facility_reference
 
@@ -428,8 +443,11 @@ def create_diagnostic_report_with_contained_observations(patient, test_facility,
     ##patient
     patient_reference = FHIRReference()
     patient_reference.reference = f'Patient/{patient.id}'
-
-    # contained.append(patient)
+    patient_reference.display = get_human_readable_name(patient.name[0])
+    patient_info_extension = create_subject_info_extension(patient)
+    patient_reference.extension = [
+        patient_info_extension
+    ]
     diagnostic_report.subject = patient_reference
 
     ## effective time
@@ -445,8 +463,8 @@ def create_diagnostic_report_with_contained_observations(patient, test_facility,
     ##test performer(s)
     test_facility_reference = FHIRReference()
     # test_facility_reference.reference = f'Organization/{test_facility.id}'
-
     test_facility_reference.reference = f'#{test_facility.id}'
+    test_facility_reference.display = test_facility.name
     contained.append(test_facility)
     diagnostic_report.performer = test_facility_reference
 
@@ -819,8 +837,8 @@ def main():
         lab_tech_info["family_name"]
     )
 
-    create_dr_with_contained_labs(uploaded_patient, organization, lab_tech, diagnostic_report_info, lab_result_infos, base_url, output_directory_name)
-    create_dr_with_referenced_labs_with_contained_patient(uploaded_patient, organization, lab_tech, diagnostic_report_info, lab_result_infos, base_url, output_directory_name)
+    # create_dr_with_contained_labs(uploaded_patient, organization, lab_tech, diagnostic_report_info, lab_result_infos, base_url, output_directory_name)
+    # create_dr_with_referenced_labs_with_contained_patient(uploaded_patient, organization, lab_tech, diagnostic_report_info, lab_result_infos, base_url, output_directory_name)
     create_dr_with_referenced_labs_with_referenced_patient(uploaded_patient, organization, lab_tech, diagnostic_report_info, lab_result_infos, base_url, output_directory_name)
 
     print(f'Created resources for patient ID: {uploaded_patient.id}')
