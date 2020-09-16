@@ -1,7 +1,7 @@
 {
-    "id": "153586",
+    "id": "565755",
     "meta": {
-        "lastUpdated": "2020-09-10T22:45:20.913+00:00",
+        "lastUpdated": "2020-09-15T22:01:10.363-04:00",
         "versionId": "1"
     },
     "contained": [
@@ -11,10 +11,6 @@
             "resourceType": "Organization"
         }
     ],
-    "text": {
-        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div class=\"hapiHeaderText\"> SARS-COV-2, NAA </div><table class=\"hapiPropertyTable\"><tbody><tr><td>Status</td><td>final</td></tr><tr><td>Issued</td><td> 15 July 2020 05:10:45 </td></tr></tbody></table></div>",
-        "status": "generated"
-    },
     "category": {
         "coding": [
             {
@@ -40,10 +36,10 @@
     },
     "result": [
         {
-            "reference": "Observation/153584"
+            "reference": "Observation/565753"
         },
         {
-            "reference": "Observation/153585"
+            "reference": "Observation/565754"
         }
     ],
     "status": "final",
@@ -63,28 +59,32 @@
                         }
                     },
                     {
-                        "extension": [
-                            {
-                                "url": "country",
-                                "valueString": "United States of America"
+                        "url": "http://commonpass.org/fhir/StructureDefinition/subject-passport-identifier-info",
+                        "valueIdentifier": {
+                            "assigner": {
+                                "display": "United States of America"
                             },
-                            {
-                                "url": "number",
-                                "valueString": "12345678-90"
+                            "period": {
+                                "end": "2024-12-04"
                             },
-                            {
-                                "url": "expiration",
-                                "valueDate": "2024-12-04"
-                            }
-                        ],
-                        "url": "http://commonpass.org/fhir/StructureDefinition/subject-passport-info"
+                            "type": {
+                                "coding": [
+                                    {
+                                        "code": "PPN",
+                                        "display": "Passport Number",
+                                        "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                                    }
+                                ]
+                            },
+                            "value": "12345678-90"
+                        }
                     }
                 ],
                 "url": "http://commonpass.org/fhir/StructureDefinition/subject-info"
             }
         ],
         "display": "Lab A Patient",
-        "reference": "Patient/153583"
+        "reference": "Patient/565752"
     },
     "resourceType": "DiagnosticReport"
 }
