@@ -4,9 +4,18 @@
     "patient": {
         "given_name": "Lab A",
         "family_name": "Patient",
-        "passport_number": "12345678-90",
-        "passport_country": "United States of America",
-        "passport_expiration": "2024-12-04"
+        "passports": [
+            {
+                "passport_number": "12345678-90",
+                "passport_country": "United States of America",
+                "passport_expiration": "2024-12-04"
+            },
+            {
+                "passport_number": "9872349875987",
+                "passport_country": "UK",
+                "passport_expiration": "2023-01-14"
+            }
+        ]
     },
     "organization": {
         "id": "8932748723984",

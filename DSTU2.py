@@ -23,9 +23,8 @@ from fhir.resources.DSTU2.period import Period
 SUBJECT_INFO_EXTENSION_URL = "http://commonpass.org/fhir/StructureDefinition/subject-info"
 SUBJECT_INFO_NAME_EXTENSION_URL = "http://commonpass.org/fhir/StructureDefinition/subject-name-info"
 
-SUBJECT_PASSPORT_IDENTIFIER_EXTENSION_URL = "http://commonpass.org/fhir/StructureDefinition/subject-passport-identifier-info"
+SUBJECT_IDENTIFIER_EXTENSION_URL = "http://commonpass.org/fhir/StructureDefinition/subject-identifier-info"
 
-SUBJECT_INFO_PASSPORT_EXTENSION_URL = "http://commonpass.org/fhir/StructureDefinition/subject-passport-info"
 SUBJECT_INFO_PASSPORT_COUNTRY_EXTENSION_URL = "country"
 SUBJECT_INFO_PASSPORT_NUMBER_EXTENSION_URL = "number"
 SUBJECT_INFO_PASSPORT_EXPIRATION_EXTENSION_URL = "expiration"
@@ -51,32 +50,6 @@ TEST_IDENTIFIER_EXTENSION_VALUE = "0123456789"
 IDENTIFIER_CODE_SYSTEM = "http://terminology.hl7.org/CodeSystem/v2-0203"
 IDENTIFIER_PASSPORT_CODE = "PPN"
 IDENTIFIER_USE_OFFICIAL = "official"
-
-# def create_passport_info_extension(passport_country, passport_number, passport_expiration_date):
-
-#     passport_info_country_extension = Extension()
-#     passport_info_country_extension.url = SUBJECT_INFO_PASSPORT_COUNTRY_EXTENSION_URL
-#     passport_info_country_extension.valueString = passport_country
-
-#     passport_info_number_extension = Extension()
-#     passport_info_number_extension.url = SUBJECT_INFO_PASSPORT_NUMBER_EXTENSION_URL
-#     passport_info_number_extension.valueString = passport_number
-
-#     passport_info_expiration_extension = Extension()
-#     passport_info_expiration_extension.url = SUBJECT_INFO_PASSPORT_EXPIRATION_EXTENSION_URL
-#     expiration_date = FHIRDate()
-#     expiration_date.date = passport_expiration_date
-#     passport_info_expiration_extension.valueDate = expiration_date
-
-#     passport_extension = Extension()
-#     passport_extension.url = SUBJECT_INFO_PASSPORT_EXTENSION_URL
-#     passport_extension.extension = [
-#         passport_info_country_extension,
-#         passport_info_number_extension,
-#         passport_info_expiration_extension
-#     ]
-
-#     return passport_extension
 
 def create_passport_identifier(passport_country, passport_number, passport_expiration_date):
 
@@ -104,14 +77,15 @@ def create_passport_identifier(passport_country, passport_number, passport_expir
 
     return identifier
 
-def get_passport_identifier(patient):
+def get_passport_identifiers(patient):
+    passport_identifiers = []
     for identifier in patient.identifier:
         if identifier.type != None and identifier.type.coding != None:
             for coding in identifier.type.coding:
                 if coding.system == IDENTIFIER_CODE_SYSTEM and coding.code == IDENTIFIER_PASSPORT_CODE:
-                    return identifier
+                    passport_identifiers.append(identifier)
 
-    return None
+    return passport_identifiers
 
 # def get_passport_info_extension(patient):
 #     for extension in patient.extension:
@@ -127,9 +101,9 @@ def create_subject_name_extension(human_name):
 
     return extension
 
-def create_subject_passport_extension(identifier):
+def create_subject_identifier_extension(identifier):
     extension = Extension()
-    extension.url = SUBJECT_PASSPORT_IDENTIFIER_EXTENSION_URL
+    extension.url = SUBJECT_IDENTIFIER_EXTENSION_URL
     extension.valueIdentifier = identifier
 
     return extension
@@ -143,27 +117,31 @@ def create_subject_info_extension(patient):
         create_subject_name_extension(patient.name[0])
     ]
 
-    passport_identifier = get_passport_identifier(patient)
-    if passport_identifier != None:
-        extension.extension = extension.extension + [
-            create_subject_passport_extension(passport_identifier)
-        ]
+    passport_identifiers = get_passport_identifiers(patient)
+    for passport_identifier in passport_identifiers:
+        extension.extension.append(
+            create_subject_identifier_extension(passport_identifier)
+        ) 
 
     return extension
     
-def create_patient(given_name, family_name, passport_number, passport_country, passport_expiration_date):
+def create_patient(given_name, family_name, passports):
     patient = Patient()
     name = HumanName()
     name.family = [family_name]
     name.given = [given_name]
     patient.name = [name]
 
-    passport_identifier = create_passport_identifier(passport_country, passport_number, passport_expiration_date)
-    patient.identifier = [passport_identifier]
+    passport_identifiers = []
+    for passport in passports:
+        passport_identifier = create_passport_identifier(
+            passport["passport_country"], 
+            passport["passport_number"], 
+            date.fromisoformat(passport['passport_expiration'])
+        )
+        passport_identifiers.append(passport_identifier)
 
-    # passport_extension = create_passport_info_extension(passport_country, passport_number, passport_expiration_date)
-
-    # patient.extension = [passport_extension]
+    patient.identifier = passport_identifiers
 
     return patient
 
@@ -867,9 +845,7 @@ def main():
     patient = create_patient(
         patient_info['given_name'], 
         patient_info['family_name'],
-        patient_info['passport_number'],
-        patient_info['passport_country'],
-        date.fromisoformat(patient_info['passport_expiration'])
+        patient_info['passports']
     )
 
     write_resource_to_file(

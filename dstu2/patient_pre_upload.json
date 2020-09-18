@@ -17,6 +17,24 @@
                 ]
             },
             "value": "12345678-90"
+        },
+        {
+            "assigner": {
+                "display": "UK"
+            },
+            "period": {
+                "end": "2023-01-14"
+            },
+            "type": {
+                "coding": [
+                    {
+                        "code": "PPN",
+                        "display": "Passport Number",
+                        "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                    }
+                ]
+            },
+            "value": "9872349875987"
         }
     ],
     "name": [

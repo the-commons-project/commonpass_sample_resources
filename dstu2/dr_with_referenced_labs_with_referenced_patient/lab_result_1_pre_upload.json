@@ -86,7 +86,7 @@
                         }
                     },
                     {
-                        "url": "http://commonpass.org/fhir/StructureDefinition/subject-passport-identifier-info",
+                        "url": "http://commonpass.org/fhir/StructureDefinition/subject-identifier-info",
                         "valueIdentifier": {
                             "assigner": {
                                 "display": "United States of America"
@@ -105,13 +105,34 @@
                             },
                             "value": "12345678-90"
                         }
+                    },
+                    {
+                        "url": "http://commonpass.org/fhir/StructureDefinition/subject-identifier-info",
+                        "valueIdentifier": {
+                            "assigner": {
+                                "display": "UK"
+                            },
+                            "period": {
+                                "end": "2023-01-14"
+                            },
+                            "type": {
+                                "coding": [
+                                    {
+                                        "code": "PPN",
+                                        "display": "Passport Number",
+                                        "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                                    }
+                                ]
+                            },
+                            "value": "9872349875987"
+                        }
                     }
                 ],
                 "url": "http://commonpass.org/fhir/StructureDefinition/subject-info"
             }
         ],
         "display": "Lab A Patient",
-        "reference": "Patient/565752"
+        "reference": "Patient/565900"
     },
     "valueString": "Indeterminate",
     "resourceType": "Observation"
