@@ -1,32 +1,47 @@
 {
-    "id": "153583",
+    "id": "565900",
     "meta": {
-        "lastUpdated": "2020-09-10T22:45:20.629+00:00",
+        "lastUpdated": "2020-09-18T11:02:02.158-04:00",
         "versionId": "1"
     },
-    "extension": [
+    "identifier": [
         {
-            "extension": [
-                {
-                    "url": "country",
-                    "valueString": "United States of America"
-                },
-                {
-                    "url": "number",
-                    "valueString": "12345678-90"
-                },
-                {
-                    "url": "expiration",
-                    "valueDate": "2024-12-04"
-                }
-            ],
-            "url": "http://commonpass.org/fhir/StructureDefinition/subject-passport-info"
+            "assigner": {
+                "display": "United States of America"
+            },
+            "period": {
+                "end": "2024-12-04"
+            },
+            "type": {
+                "coding": [
+                    {
+                        "code": "PPN",
+                        "display": "Passport Number",
+                        "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                    }
+                ]
+            },
+            "value": "12345678-90"
+        },
+        {
+            "assigner": {
+                "display": "UK"
+            },
+            "period": {
+                "end": "2023-01-14"
+            },
+            "type": {
+                "coding": [
+                    {
+                        "code": "PPN",
+                        "display": "Passport Number",
+                        "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                    }
+                ]
+            },
+            "value": "9872349875987"
         }
     ],
-    "text": {
-        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div class=\"hapiHeaderText\">Lab A <b>PATIENT </b></div><table class=\"hapiPropertyTable\"><tbody></tbody></table></div>",
-        "status": "generated"
-    },
     "name": [
         {
             "family": [
