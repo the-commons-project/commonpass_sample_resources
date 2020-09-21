@@ -36,7 +36,7 @@
             "code_code": "94500-6",
             "code_display": "SARS-COV-2, NAA",
             "valueString": "Indeterminate",
-            "interpretation": "N",
+            "interpretation": "IND",
             "effective": "2020-07-14T23:10:45",
             "issued": "2020-07-14T23:10:45"
         }
