@@ -1,7 +1,7 @@
 {
-    "id": "565900",
+    "id": "566089",
     "meta": {
-        "lastUpdated": "2020-09-18T11:02:02.158-04:00",
+        "lastUpdated": "2020-09-23T19:29:12.263-04:00",
         "versionId": "1"
     },
     "identifier": [
@@ -17,7 +17,7 @@
                     {
                         "code": "PPN",
                         "display": "Passport Number",
-                        "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                        "system": "http://hl7.org/fhir/v2/0203"
                     }
                 ]
             },
@@ -35,7 +35,7 @@
                     {
                         "code": "PPN",
                         "display": "Passport Number",
-                        "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                        "system": "http://hl7.org/fhir/v2/0203"
                     }
                 ]
             },

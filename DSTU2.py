@@ -47,7 +47,7 @@ TEST_MANUFACTURER_MODEL_CODE = "TBD"
 TEST_IDENTIFIER_EXTENSION_URL = "http://commonpass.org/fhir/StructureDefinition/test-identifier"
 TEST_IDENTIFIER_EXTENSION_VALUE = "0123456789"
 
-IDENTIFIER_CODE_SYSTEM = "http://terminology.hl7.org/CodeSystem/v2-0203"
+IDENTIFIER_CODE_SYSTEM = "http://hl7.org/fhir/v2/0203"
 IDENTIFIER_PASSPORT_CODE = "PPN"
 IDENTIFIER_USE_OFFICIAL = "official"
 

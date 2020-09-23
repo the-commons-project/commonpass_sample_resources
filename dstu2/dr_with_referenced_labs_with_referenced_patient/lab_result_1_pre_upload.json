@@ -99,7 +99,7 @@
                                     {
                                         "code": "PPN",
                                         "display": "Passport Number",
-                                        "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                                        "system": "http://hl7.org/fhir/v2/0203"
                                     }
                                 ]
                             },
@@ -120,7 +120,7 @@
                                     {
                                         "code": "PPN",
                                         "display": "Passport Number",
-                                        "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                                        "system": "http://hl7.org/fhir/v2/0203"
                                     }
                                 ]
                             },
@@ -132,7 +132,7 @@
             }
         ],
         "display": "Lab A Patient",
-        "reference": "Patient/565900"
+        "reference": "Patient/566089"
     },
     "valueString": "Indeterminate",
     "resourceType": "Observation"
