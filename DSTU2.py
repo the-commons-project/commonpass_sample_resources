@@ -22,7 +22,7 @@ from fhir.resources.DSTU2.period import Period
 
 SUBJECT_INFO_EXTENSION_URL = "http://commonpass.org/fhir/StructureDefinition/subject-info"
 SUBJECT_INFO_NAME_EXTENSION_URL = "http://commonpass.org/fhir/StructureDefinition/subject-name-info"
-
+SUBJECT_INFO_DOB_EXTENSION_URL = "http://commonpass.org/fhir/StructureDefinition/subject-dob-info"
 SUBJECT_IDENTIFIER_EXTENSION_URL = "http://commonpass.org/fhir/StructureDefinition/subject-identifier-info"
 
 SUBJECT_INFO_PASSPORT_COUNTRY_EXTENSION_URL = "country"
@@ -101,6 +101,13 @@ def create_subject_name_extension(human_name):
 
     return extension
 
+def create_subject_dob_extension(fhir_dob):
+    extension = Extension()
+    extension.url = SUBJECT_INFO_DOB_EXTENSION_URL
+    extension.valueDate = fhir_dob
+
+    return extension
+
 def create_subject_identifier_extension(identifier):
     extension = Extension()
     extension.url = SUBJECT_IDENTIFIER_EXTENSION_URL
@@ -114,7 +121,8 @@ def create_subject_info_extension(patient):
     extension = Extension()
     extension.url = SUBJECT_INFO_EXTENSION_URL
     extension.extension = [
-        create_subject_name_extension(patient.name[0])
+        create_subject_name_extension(patient.name[0]),
+        create_subject_dob_extension(patient.birthDate),
     ]
 
     passport_identifiers = get_passport_identifiers(patient)
@@ -125,12 +133,16 @@ def create_subject_info_extension(patient):
 
     return extension
     
-def create_patient(given_name, family_name, passports):
+def create_patient(given_name, family_name, dob, passports):
     patient = Patient()
     name = HumanName()
     name.family = [family_name]
     name.given = [given_name]
     patient.name = [name]
+
+    fhir_dob = FHIRDate()
+    fhir_dob.date = dob
+    patient.birthDate = fhir_dob
 
     passport_identifiers = []
     for passport in passports:
@@ -845,6 +857,7 @@ def main():
     patient = create_patient(
         patient_info['given_name'], 
         patient_info['family_name'],
+        date.fromisoformat(patient_info['dob']),
         patient_info['passports']
     )
 

@@ -4,6 +4,7 @@
     "patient": {
         "given_name": "Lab A",
         "family_name": "Patient",
+        "dob": "1980-10-31",
         "passports": [
             {
                 "passport_number": "12345678-90",
