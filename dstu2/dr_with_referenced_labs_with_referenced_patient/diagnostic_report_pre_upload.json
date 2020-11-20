@@ -31,10 +31,10 @@
     },
     "result": [
         {
-            "reference": "Observation/566090"
+            "reference": "Observation/568123"
         },
         {
-            "reference": "Observation/566091"
+            "reference": "Observation/568124"
         }
     ],
     "status": "final",
@@ -52,6 +52,10 @@
                                 "Lab A"
                             ]
                         }
+                    },
+                    {
+                        "url": "http://commonpass.org/fhir/StructureDefinition/subject-dob-info",
+                        "valueDate": "1980-10-31"
                     },
                     {
                         "url": "http://commonpass.org/fhir/StructureDefinition/subject-identifier-info",
@@ -100,7 +104,7 @@
             }
         ],
         "display": "Lab A Patient",
-        "reference": "Patient/566089"
+        "reference": "Patient/568122"
     },
     "resourceType": "DiagnosticReport"
 }

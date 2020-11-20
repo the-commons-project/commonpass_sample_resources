@@ -86,6 +86,10 @@
                         }
                     },
                     {
+                        "url": "http://commonpass.org/fhir/StructureDefinition/subject-dob-info",
+                        "valueDate": "1980-10-31"
+                    },
+                    {
                         "url": "http://commonpass.org/fhir/StructureDefinition/subject-identifier-info",
                         "valueIdentifier": {
                             "assigner": {
@@ -132,7 +136,7 @@
             }
         ],
         "display": "Lab A Patient",
-        "reference": "Patient/566089"
+        "reference": "Patient/568122"
     },
     "valueString": "Negative",
     "resourceType": "Observation"

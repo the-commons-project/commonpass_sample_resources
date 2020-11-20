@@ -1,7 +1,7 @@
 {
-    "id": "566090",
+    "id": "568123",
     "meta": {
-        "lastUpdated": "2020-09-23T19:29:12.556-04:00",
+        "lastUpdated": "2020-11-20T17:50:41.966-05:00",
         "versionId": "1"
     },
     "contained": [
@@ -91,6 +91,10 @@
                         }
                     },
                     {
+                        "url": "http://commonpass.org/fhir/StructureDefinition/subject-dob-info",
+                        "valueDate": "1980-10-31"
+                    },
+                    {
                         "url": "http://commonpass.org/fhir/StructureDefinition/subject-identifier-info",
                         "valueIdentifier": {
                             "assigner": {
@@ -137,7 +141,7 @@
             }
         ],
         "display": "Lab A Patient",
-        "reference": "Patient/566089"
+        "reference": "Patient/568122"
     },
     "valueString": "Negative",
     "resourceType": "Observation"
