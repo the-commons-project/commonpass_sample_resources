@@ -1,2 +1,2 @@
 requests
-fhir.resources
+fhir.resources==5.1.1
